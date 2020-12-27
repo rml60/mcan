@@ -1,4 +1,6 @@
-"""
+""" mcancommand.py
+
+    Autor: Maier-Lohman, Rainer
 """
 from .mcanmsgarray import McanMsgArray
 

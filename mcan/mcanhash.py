@@ -1,6 +1,6 @@
-"""
+""" mcanhash.py
 
-@author: Maier-Lohman, Rainer
+    Autor: Maier-Lohman, Rainer
 """
 # -----------------------------------------------------------------------------
 # Klasse zur Erstellung bzw. Verwaltung eines MCAN-Hashes

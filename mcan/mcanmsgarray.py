@@ -1,4 +1,5 @@
-""" 
+""" mcanmsgarray.py
+
     Autor: Maier-Lohmann, Rainer
 """
 
