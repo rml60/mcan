@@ -10,9 +10,9 @@ mit Märklin can-Nachrichten ist realisiert.
 Die Struktur einer Märklin can-Nachricht ist in der
 Klasse McanMsgArray abgebildet.
 
-Die Klassen McanDecode und McanDecode erben McanMsgArray.
-McanDecode kann noch eine Menge Nachrichten nicht
+Die Klassen McanCommand und McanDecode erben McanMsgArray.
+McanDecode ist noch nicht in der Lage alle Nachrichten zu
 dekodieren.
 
-Fehler sind noch vorhanden. Auch die Dokumentation der
-einzelnen Komponenten fehlt.
+Es sind mit Sicherheit noch Fehler vorhanden und auch die Dokumentation der
+einzelnen Komponenten fehlt noch. 
