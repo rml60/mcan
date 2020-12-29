@@ -8,39 +8,64 @@ from .mcanmsgarray import McanMsgArray
 # Klasse zur Verwaltung eines Maerklin CANbus Befehls
 # -----------------------------------------------------------------------------
 class McanCommand(McanMsgArray):
+  """ Klasse zur Verwaltung eines Maerklin CANbus Befehls
+  """
   def __init__(self, mcanHash):
     super().__init__()
     self.setHash(mcanHash)
 
   @property
   def frame(self):
+    """ Liefert den can-Datenrahmen als 13-byte-langes bytearray
+    """
     return bytearray(self.array)
 
+  @property
+  def response(self):
+    """ Liefert den can-Datenrahmen als 13-byte-langes bytearray mit
+        aktiviertem Antwortbit.
+    """
+    response = McanMsgArray(self.frame)
+    response.setByte('cmdAndResp', response.getByte('cmdAndResp')|0x01)
+    return bytearray(response.array)
+
   def setPrio(self, prio):
+    """ Setzt das prio-Byte im can-Datenrahmen
+    """
     self.setByName(prio, 'prio')
 
   def setCommand(self, cmd, response=False, dlc=8 ):
+    """ Setzt das Befehls-Byte im can-Datenrahmen
+    """
     if response:
       cmd += 1
     self.setByte('cmdAndResp', cmd)
     self.setDlc(dlc)
 
   def setHash(self, mcanHash):
+    """ Setzt die beiden Hash-Bytes im can-Datenrahmen
+    """
     self.setByte('hashH', mcanHash >> 8)
     self.setByte('hashL', mcanHash & 0xff)
 
   def setDlc(self, dlc):
-    """ data len count
+    """ Setzt das dlc-Byte im can-Datenrahmen
+        data len count
     """
     self.setByte('dlc', dlc)
 
-  def setTrackStateDevice(self, devId, subId):
+  def setDevice(self, devId, subId):
+    """ Setzt die 4 ersten Datenbytes im can-Datenrahmen
+    """
     self.setByte('d0', devId >> 8)
     self.setByte('d1', devId & 0xff)
     self.setByte('d2', subId >> 8)
     self.setByte('d3', subId & 0xff)
 
   def toggleTrackState(self, newState=None):
+    """ Setzt das Status-Byte (Rueckmelder)
+        Der letzte Status wird entsprechend gesetzt.
+    """
     self.setByte('d4', self.getByte('d5'))
     if newState is None:
       self.setByte('d5', self.getByte('d5') ^ 0x01)
