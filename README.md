@@ -1,6 +1,6 @@
-MCAN
+# MCAN
 
-MicroPython - Modul fuer das Märklin can-Protokoll
+**MicroPython - Modul fuer das Märklin can-Protokoll**
 
 Es soll ein Modul zum Umgang mit Märklin can-Nachrichten
 entstehen, dass im esp32 Umfeld genutzt werden kann.
