@@ -69,12 +69,25 @@ class McanCommand(McanMsgArray):
     self.setByte('d2', subId >> 8)
     self.setByte('d3', subId & 0xff)
 
-  def toggleTrackState(self, newState=None):
-    """ Setzt das Status-Byte (Rueckmelder)
-        Der letzte Status wird entsprechend gesetzt.
+  def toggleTrackState(self, devId=None, subId=None, newState=None):
+    """ deprecated: recentState wird nicht pro subId gespeichert 
+                    Es ist sicherer setTrackState zu nutzen.
+        Setzt das Status-Byte (Rueckmelder)
+        Der letzte(recent) Status wird entsprechend gesetzt.
     """
+    if devId is not None and subId is not None:
+      self.setDevice(devId, subId)
     self.setByte('d4', self.getByte('d5'))
     if newState is None:
       self.setByte('d5', self.getByte('d5') ^ 0x01)
     else:
       self.setByte('d5', newState)
+
+  def setTrackState(self, devId, subId, state, recentState):
+    """ Setzt die Status-Bytes (Rueckmelder)
+
+    """
+    self.setDevice(devId, subId)
+    self.setByte('d4', recentState)
+    self.setByte('d5', state)
+
