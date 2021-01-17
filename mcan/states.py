@@ -1,6 +1,13 @@
-""" class States
+""" states.py
 
-    (C) 2021   Maier-Lohmann, Rainer
+    Author: Rainer Maier-Lohmann
+    ---------------------------------------------------------------------------
+    "THE BEER-WARE LICENSE" (Revision 42):
+    <r.m-l@gmx.de> wrote this file.  As long as you retain this notice you
+    can do whatever you want with this stuff. If we meet some day, and you 
+    think this stuff is worth it, you can buy me a beer in return.
+    ---------------------------------------------------------------------------
+    (C) 2021
 """
 
 class States():
