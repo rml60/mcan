@@ -217,8 +217,8 @@ class McanDecode(McanMsgArray):
     out = self.__getFormatedIdOut()
     out += self.__getFormatedOut('Position:', self.getByte('d4'))
     out += self.__getFormatedOut('Strom:', self.getByte('d5'))
-    if self.__dlc == 8:
-      out += self.__getFormatedOut('Schaltzeit:', '{} {}'.format(self.__d6, self.__d7))
+    if self.getByte('dlc') == 8:
+      out += self.__getFormatedOut('Schaltzeit:', '{} {}'.format(self.getByte('d6'), self.getByte('d7')))
     return out
 
   def __decodeCmd34(self):
