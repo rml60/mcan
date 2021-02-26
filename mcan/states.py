@@ -63,6 +63,8 @@ class States():
     self.setStateBit(stateBit,0)
 
   def setStateBits(self, states):
+    """ set all state bits
+    """
     for stateBit in range(1, self.__maxStateBits+1, 1):
       self.setStateBit(stateBit, (states>>(stateBit-1))&1)
 
