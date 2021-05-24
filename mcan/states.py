@@ -48,9 +48,9 @@ class States():
     if value != 0:
       self.__states |= 2**stateBit
     else:
-      self.__states &= 0xFFFF - 2**stateBit
-    self.__changed = self.__recentStates != self.__states
-    #self.__isNotSend = True
+      self.__states &= 0x1FFFF - 2**stateBit
+    if self.__recentStates != self.__states:
+      self.__changed = True
 
   def setStateBitOn(self, stateBit):
     """ set the state of the given stateBit On

@@ -1,4 +1,5 @@
-""" MCAN Modul
+""" mcandecode.py
+    MCAN Modul
     Modul zur Verwaltung, Analyse und Ersstellung
     von Maerklin CAN-Bus Meldungen
 
